@@ -30,6 +30,7 @@ def main():
 	sierpinski_triangle(ORDER, LENGTH, UPPER_LEFT_X, UPPER_LEFT_Y)
 
 
+
 def sierpinski_triangle(order, length, upper_left_x, upper_left_y):
 	"""
 	:param order:
@@ -38,7 +39,20 @@ def sierpinski_triangle(order, length, upper_left_x, upper_left_y):
 	:param upper_left_y:
 	:return:
 	"""
-	pass
+	#draw triangle
+	window.add(GLine(upper_left_x, upper_left_y, upper_left_x+length, upper_left_y))
+	window.add(GLine(upper_left_x, upper_left_y, upper_left_x+length/2, upper_left_y+(length*0.866)))
+	window.add(GLine(upper_left_x+length, upper_left_y, upper_left_x+length/2, upper_left_y+(length*0.866)))
+	
+
+	
+	if order>0:
+		sierpinski_triangle(order-1,length/2,upper_left_x,upper_left_y)
+		sierpinski_triangle(order-1,length/2,upper_left_x+length/2,upper_left_y)
+		sierpinski_triangle(order-1,length/2,upper_left_x+length/4,upper_left_y+(length/2*0.866))
+		
+
+		
 
 
 if __name__ == '__main__':
