@@ -17,29 +17,43 @@ number of anagrams for each word listed below:
 """
 
 import time                   # This file allows you to calculate the speed of your algorithm
+from collections import Counter
 
 # Constants
 FILE = 'dictionary.txt'       # This is the filename of an English dictionary
-EXIT = '-1'                   # Controls when to stop the loop
-
+EXIT = '-1'# Controls when to stop the loop
+FIND_WORD_DICT = {}
+ALL_WORD=[]
+ANS_WORD =[]
 
 def main():
     """
     TODO:
     """
+    read_dictionary()
+    print('Welcome to standCode "Anagram Generator" (or -1 to quit)')
     start = time.time()
-    ####################
-    #                  #
-    #       TODO:      #
-    #                  #
-    ####################
+    while 1:
+        User_input = input('Find anagram:')
+        if User_input == EXIT:
+            break
+        else:
+           find_anagrams(User_input)
+
+    
     end = time.time()
     print('----------------------------------')
     print(f'The speed of your anagram algorithm: {end-start} seconds.')
 
 
 def read_dictionary():
-    pass
+    with open (FILE ,'r') as file:
+        for line in file:
+            word = line.strip()
+            ALL_WORD.append(word);
+
+            
+            
 
 
 def find_anagrams(s):
@@ -47,7 +61,12 @@ def find_anagrams(s):
     :param s:
     :return:
     """
-    pass
+    for i in range (len(ALL_WORD)):
+        if Counter(s) == Counter(ALL_WORD[i]):
+            ANS_WORD.append(ALL_WORD[i])
+            print("FOUND : %s",ALL_WORD[i])
+    print(ANS_WORD)    
+    
 
 
 def has_prefix(sub_s):
