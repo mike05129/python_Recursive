@@ -7,7 +7,8 @@ This file recursively prints the biggest digit in
 If your implementation is correct, you should see
 5, 8, 6, 1, 9 on Console.
 """
-
+maxium_num  = 0
+ans = 0
 
 def main():
     print(find_largest_digit(12345))      # 5
@@ -22,14 +23,19 @@ def find_largest_digit(n):
     :param n:
     :return:
     """
-
-    dig = n % 10
-    dig2 = (n/10) % 10
+    global maxium_num ,ans
+    dig = int(abs(n) % 10)
+    dig2 = int((abs(n)//10) % 10)
     if dig >= dig2:
         dig2 = dig
-    if n > 0:
-        find_largest_digit(n/10)
-    return dig2
+    if dig2 > maxium_num:
+        maxium_num = dig2
+        ans = maxium_num
+    if abs(n) > 99:
+        find_largest_digit(abs(n)//10)
+    maxium_num=0
+    return int(ans)
+ 
 
 
 if __name__ == '__main__':

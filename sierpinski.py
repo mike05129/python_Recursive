@@ -41,12 +41,14 @@ def sierpinski_triangle(order, length, upper_left_x, upper_left_y):
 	"""
 	#draw triangle
 	window.add(GLine(upper_left_x, upper_left_y, upper_left_x+length, upper_left_y))
+	pause(50)
 	window.add(GLine(upper_left_x, upper_left_y, upper_left_x+length/2, upper_left_y+(length*0.866)))
+	pause(50)
 	window.add(GLine(upper_left_x+length, upper_left_y, upper_left_x+length/2, upper_left_y+(length*0.866)))
 	
 
 	
-	if order>0:
+	if order>1:
 		sierpinski_triangle(order-1,length/2,upper_left_x,upper_left_y)
 		sierpinski_triangle(order-1,length/2,upper_left_x+length/2,upper_left_y)
 		sierpinski_triangle(order-1,length/2,upper_left_x+length/4,upper_left_y+(length/2*0.866))
